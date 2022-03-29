@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>FLEX Web interpreter v1.0.0</title>
+        <meta charset="UTF-8">
+        <style>
+            html,
+            body {
+                background: #000000;
+                color: #ffffff;
+            }
+
+            * {
+                font-family: monospace;
+            }
+
+            .input-box {
+                position: fixed;
+                right: 0;
+                bottom: 0;
+                left: 0;
+            }
+
+            input[type=text] {
+                width: 100%;
+                border: none;
+                outline: none;
+                font-size: 20px;
+                color: #ffffff;
+                background: #000000;
+            }
+        </style>
+    </head>
+    <body>
+        <div align="center">
+            <h1>The Dar's <i>FLEX Web interpreter</i></h1>
+            <p>Copyright (C) 2022 darhm,<BR> Licensed under GPL-3.0 License, <BR>THIS SOFTWARE COMES WITH NO WARRANTY.<BR><i>Example:</i> [["Hello, World"], "#put"]</p>
+        </div>
+        <div id="flex-console"></div>
+        <div class="input-box">
+            <input type="text" placeholder="Enter a command" id="command">
+        </div>
+    </body>
+    <script src="flex-int.js"></script>
+    <script src="main.js"></script>
+</html>
