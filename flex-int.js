@@ -56,6 +56,10 @@ F.iobuffer = {
         return a;
     },
 
+    clear: () => {
+        document.getElementById("flex-console").innerHTMl = "";
+    },
+
     /** FLEX iobuffer identifier **/
     flex: true
 };
