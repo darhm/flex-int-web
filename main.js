@@ -22,13 +22,13 @@ command.addEventListener("keypress", (e) => {
     let expr = command.value;
     let parsed;
 
-    F.iobuffer.output(expr);
+    F.iobuffer.output("> " + expr);
 
     try {
         // parse yaml, requires js-yaml script
         parsed = jsyaml.load(expr, jsyaml.CORE_SCHEMA);
     } catch (e) {
-        F.iobuffer.output("Provide valid YAML!");
+        F.iobuffer.output("< Provide valid YAML!");
 
         return;
     }
@@ -37,7 +37,7 @@ command.addEventListener("keypress", (e) => {
         API = F.eval(API, parsed);
     } catch (e) {
         if (e == "dead") {
-            F.iobuffer.output("dead");
+            F.iobuffer.output("< dead");
 
             return;
         }
@@ -47,7 +47,7 @@ command.addEventListener("keypress", (e) => {
         return;
     }
 
-    F.iobuffer.output("OK!");
+    F.iobuffer.output("< OK!");
 
     command.value = "";
 });
