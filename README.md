@@ -9,9 +9,9 @@ This is the `flex-int-web`, it's the same as `flex-int` but for web.
 </div>
 
 # Docs and info
-For more docs and other see the [`flex-int`](https://gitlab.com/darhm/flex-int) repo.
+Work in progess
 
-**NOTE**: `flex-int-web` uses `JSON` not `FSON` or `YAML`.
+**NOTE**: `flex-int-web` uses `YAML` not `FSON` or `JSON`.
 
 # Visiting the website
 Work in progress.
