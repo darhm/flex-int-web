@@ -57,7 +57,7 @@ F.iobuffer = {
     },
 
     clear: () => {
-        document.getElementById("flex-console").innerHTMl = "";
+        document.getElementById("flex-console").innerHTML = "";
     },
 
     /** FLEX iobuffer identifier **/
@@ -254,13 +254,13 @@ F.validator = {
          x == "#exit" ||
          x == "#flush" ||
          x == "#put" ||
-         x == "@clear" ||
-        x == "@nop" ||
-         x == "@return" ||
-         x == "@exit" ||
-         x == "@flush" ||
-         x == "@put" ||
-         x == "@clear" ||
+         x == "#clear" ||
+        x == "~nop" ||
+         x == "~return" ||
+         x == "~exit" ||
+         x == "~flush" ||
+         x == "~put" ||
+         x == "~clear" ||
         "+-*/".split("").includes(x),
     isValidVar: (x) => /^\$[a-z-]+$/.test(x)
 };
@@ -499,24 +499,24 @@ F.eval = (api, instructions) => {
 
                         switch (instr) {
                             case "#nop":
-                            case "@nop":
+                            case "~nop":
                                 break;
 
                             case "#flush":
-                            case "@flush":
+                            case "~flush":
                                 api.stack.flush();
                                 break;
 
                             case "#return":
-                            case "@return":
+                            case "~return":
                                 return api;
 
                             case "#exit":
-                            case "@exit":
+                            case "~exit":
                                 throw "dead";
 
                             case "#put":
-                            case "@put":
+                            case "~put":
                                 a = api.stack.pop();
 
                                 if (typeof a == "object") F.iobuffer.output(JSON.stringify(a));
@@ -525,7 +525,7 @@ F.eval = (api, instructions) => {
                                 break;
 
                             case "#clear":
-                            case "@clear":
+                            case "~clear":
                                 F.iobuffer.clear();
 
                                 break;
