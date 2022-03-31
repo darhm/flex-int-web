@@ -10,7 +10,7 @@ let API = F.newAPI([], {}, {
         F.iobuffer.output("*** flex-int help v1.1.0 ***");
         F.iobuffer.output("Type your expression in YAML, expressions must include [ and ]");
         F.iobuffer.output("This FLEX implementation has a library set to do almost every operation");
-        F.iobuffer.output("Use sharp function `clear' to clear and sharp function `put' to print something");
+        F.iobuffer.output("To clear the console use the `clear' sharp function");
 
         return api;
     }
