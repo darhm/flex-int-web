@@ -248,7 +248,20 @@ F.validator = {
     isValidPushExpr: (x) => /^\$[a-z-]+(\.([0-9]+|\$[a-z-]+|[a-z-]+|&0))*$/.test(x),
     isValidClassExpr: (x) => /^\:\$[a-z-]+(\.([0-9]+|[a-z-]+|\$[a-z-]+|&0))*$/.test(x),
     isValid: (x) => /^[a-z-]+$/.test(x),
-    isValidSharp: (x) => (x == "#nop" || x == "#return" || x == "#exit" || x == "#flush" || x == "#put" || "+-*/".split("").includes(x)),
+    isValidSharp: (x) =>
+        x == "#nop" ||
+         x == "#return" ||
+         x == "#exit" ||
+         x == "#flush" ||
+         x == "#put" ||
+         x == "@clear" ||
+        x == "@nop" ||
+         x == "@return" ||
+         x == "@exit" ||
+         x == "@flush" ||
+         x == "@put" ||
+         x == "@clear" ||
+        "+-*/".split("").includes(x),
     isValidVar: (x) => /^\$[a-z-]+$/.test(x)
 };
 
@@ -486,23 +499,34 @@ F.eval = (api, instructions) => {
 
                         switch (instr) {
                             case "#nop":
+                            case "@nop":
                                 break;
 
                             case "#flush":
+                            case "@flush":
                                 api.stack.flush();
                                 break;
 
                             case "#return":
+                            case "@return":
                                 return api;
 
                             case "#exit":
+                            case "@exit":
                                 throw "dead";
 
                             case "#put":
+                            case "@put":
                                 a = api.stack.pop();
 
                                 if (typeof a == "object") F.iobuffer.output(JSON.stringify(a));
                                 else F.iobuffer.output(a);
+
+                                break;
+
+                            case "#clear":
+                            case "@clear":
+                                F.iobuffer.clear();
 
                                 break;
 
