@@ -4,6 +4,14 @@ let API = F.newAPI([], {}, {
         F.iobuffer.output(api.stack.get().join("; "));
 
         return api;
+    },
+
+    "help": (api) => {
+        F.iobuffer.output("*** flex-int help v1.1.0 ***");
+        F.iobuffer.output("Type your expression in YAML, expressions must include [ and ]");
+        F.iobuffer.output("This FLEX implementation has a library set to do almost every operation");
+
+        return api;
     }
 });
 
@@ -16,9 +24,10 @@ command.addEventListener("keypress", (e) => {
     F.iobuffer.output(expr);
 
     try {
-        parsed = JSON.parse(expr);
+        // parse yaml, requires js-yaml script
+        parsed = jsyaml.load(expr, jsyaml.CORE_SCHEMA);
     } catch (e) {
-        F.iobuffer.output("Provide valid JSON!");
+        F.iobuffer.output("Provide valid YAML!");
 
         return;
     }
