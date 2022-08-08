@@ -1,5 +1,5 @@
 /**
- * FLEX Interpreter v1.0.0
+ * FLEX Interpreter v1.1.0
  *
  * Changelog v1.1.0:
  *  added arithmetic primitives in flex;
